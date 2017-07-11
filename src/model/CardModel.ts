@@ -72,7 +72,7 @@ export class CodeSuitConverter {
      * @param code カードのヘッダーコード
      * @return トランプの種別。存在しない種別が指定された場合、Invalidを返す。
      */
-    public static headerCodeToSuitType(headerCode: string): TrumpSuitType | undefined {
+    public static headerCodeToSuitType(headerCode: string): TrumpSuitType|undefined {
         switch (headerCode) {
             case 'S': return TrumpSuitType.Spades;
             case 'C': return TrumpSuitType.Crabs;
@@ -87,7 +87,7 @@ export class CodeSuitConverter {
      * @param code トランプの種別
      * @return カードのヘッダーコード。存在しない種別が指定された場合、undefinedを返す。
      */
-    public static suitTypeToHeaderCode(suit: TrumpSuitType): string | undefined {
+    public static suitTypeToHeaderCode(suit: TrumpSuitType): string|undefined {
         switch (suit) {
             case TrumpSuitType.Spades: return 'S';
             case TrumpSuitType.Crabs: return 'C';
@@ -120,7 +120,11 @@ export class CardHelper {
         let headerCode: string = code.substring(0, 1);
         let rankCode: string = code.substring(1);
 
-        return new Trump(CodeSuitConverter.headerCodeToSuitType(headerCode), parseInt(rankCode));
+        let suitType = CodeSuitConverter.headerCodeToSuitType(headerCode);
+        if (suitType === undefined) {
+            throw new TypeError('不正なコードが指定されました');
+        }
+        return new Trump(suitType, parseInt(rankCode));
     }
 
     public static toCode(card: Card): string {
