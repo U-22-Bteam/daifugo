@@ -23,8 +23,6 @@ export abstract class Card implements ICard {
  *   参照: https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%88
  */
 export enum TrumpSuitType {
-    Invalid,
-
     Spades,
     Crabs,
     Diamonds,
@@ -74,14 +72,14 @@ export class CodeSuitConverter {
      * @param code カードのヘッダーコード
      * @return トランプの種別。存在しない種別が指定された場合、Invalidを返す。
      */
-    public static headerCodeToSuitType(headerCode: string): TrumpSuitType {
+    public static headerCodeToSuitType(headerCode: string): TrumpSuitType | undefined {
         switch (headerCode) {
             case 'S': return TrumpSuitType.Spades;
             case 'C': return TrumpSuitType.Crabs;
             case 'D': return TrumpSuitType.Diamonds;
             case 'H': return TrumpSuitType.Hearts;
         }
-        return TrumpSuitType.Invalid;
+        return undefined;
     }
 
     /**
