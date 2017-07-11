@@ -1,0 +1,20 @@
+{
+  "name": "daifugo",
+  "version": "1.0.0",
+  "description": "U-22 daifugo project",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register test/**/*.ts"
+  },
+  "author": "U-22 Team-B",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "@types/power-assert": "^1.4.29",
+    "mocha": "^3.4.2",
+    "power-assert": "^1.4.4",
+    "ts-node": "^3.2.0",
+    "typescript": "^2.4.1",
+    "typings": "^2.1.1"
+  }
+}
