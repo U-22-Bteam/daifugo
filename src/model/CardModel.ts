@@ -23,10 +23,10 @@ export abstract class Card implements ICard {
  *   参照: https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%88
  */
 export enum TrumpSuitType {
-    Spades,
-    Crabs,
-    Diamonds,
-    Hearts,
+    Spades,     // スペード
+    Crabs,      // クラブ
+    Diamonds,   // ダイヤ
+    Hearts,     // ハート
 }
 
 /**
