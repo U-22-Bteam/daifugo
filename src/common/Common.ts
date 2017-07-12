@@ -22,5 +22,5 @@ export interface IComparator<T> {
      * @param another もう片方のオブジェクト
      * @returns 一つ目のオブジェクトに対し、もう片方のオブジェクトの方が大きい場合は正の値、等しい場合は0、小さい場合は負の値を返す
      */
-    compare(one: T, another: T) : number;
+    compare(one: T, another: T): number;
 }
