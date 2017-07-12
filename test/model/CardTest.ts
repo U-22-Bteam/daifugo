@@ -6,23 +6,23 @@ import { Card, Trump, JokerTrump, TrumpSuitType, CodeSuitConverter, CardHelper }
 describe('カード', () => {
     context('オブジェクトコード', () => {
         it('スペードの11 (S11)', () => {
-            const card : Card = new Trump(TrumpSuitType.Spades, 11);
+            const card: Card = new Trump(TrumpSuitType.Spades, 11);
             assert.equal(card.getCode(), 'S11');
         });
         it('クラブの3 (C3)', () => {
-            const card : Card = new Trump(TrumpSuitType.Crabs, 3);
+            const card: Card = new Trump(TrumpSuitType.Crabs, 3);
             assert.equal(card.getCode(), 'C3');
         });
         it('ダイヤの1 (D1)', () => {
-            const card : Card = new Trump(TrumpSuitType.Diamonds, 1);
+            const card: Card = new Trump(TrumpSuitType.Diamonds, 1);
             assert.equal(card.getCode(), 'D1');
         });
         it('ハートの7 (H7)', () => {
-            const card : Card = new Trump(TrumpSuitType.Hearts, 7);
+            const card: Card = new Trump(TrumpSuitType.Hearts, 7);
             assert.equal(card.getCode(), 'H7');
         });
         it('ジョーカー (J)', () => {
-            const card : Card = new JokerTrump();
+            const card: Card = new JokerTrump();
             assert.equal(card.getCode(), 'J');
         });
     });

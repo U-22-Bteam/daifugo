@@ -6,7 +6,7 @@ import { Action } from './Action';
  * ゲームアクションの元となるクラス。
  */
 export abstract class GameAction extends Action {
-    constructor(code : string) {
+    constructor(code: string) {
         super('game.' + code);
     }
 }
@@ -15,7 +15,7 @@ export abstract class GameAction extends Action {
  * カードに関するアクション
  */
 export abstract class CardAction extends GameAction {
-    constructor(code : string) {
+    constructor(code: string) {
         super('card.' + code);
     }
 }
