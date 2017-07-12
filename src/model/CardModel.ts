@@ -124,6 +124,9 @@ export class CardHelper {
         }
         let rankCode = code.substring(1)
         let rank: number = parseInt(rankCode, 10);
+        if (isNaN(rank)) {
+            throw new TypeError('不正なコード: トランプの階級が数値に変換できません');
+        }
         return new Trump(suit, rank);
     }
 
