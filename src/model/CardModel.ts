@@ -118,13 +118,13 @@ export class CardHelper {
 
         // 頭と数字を分解
         let headerCode: string = code.substring(0, 1);
-        let rankCode: string = code.substring(1);
+        let rank: number = parseInt(code.substring(1), 10);
 
         let suitType = CodeSuitConverter.headerCodeToSuitType(headerCode);
         if (suitType === undefined) {
             throw new TypeError('不正なコードが指定されました');
         }
-        return new Trump(suitType, parseInt(rankCode));
+        return new Trump(suitType, rank);
     }
 
     public static toCode(card: Card): string {
