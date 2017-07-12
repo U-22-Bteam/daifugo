@@ -19,7 +19,7 @@ describe('カード比較器', () => {
             assert.equal(comparator.compare(card1, card2) < 0, true);
         });
         it('ジョーカーとダイヤの1: ジョーカー', () => {
-            const card1 = new JokerTrump();
+            const card1 = new JokerTrump(0);
             const card2 = new Trump(TrumpSuitType.Diamonds, 1);
             assert.equal(comparator.compare(card1, card2) < 0, true);
         });
@@ -31,17 +31,17 @@ describe('カード比較器', () => {
     });
 
     context('並び替え', () => {
-        it('[C3,D5,J,C1,H1] -> [C3,D5,C1,H1,J]', () => {
+        it('[C3,D5,J0,C1,H1] -> [C3,D5,C1,H1,J0]', () => {
             const C3 = new Trump(TrumpSuitType.Crabs, 3);
             const D5 = new Trump(TrumpSuitType.Diamonds, 5);
-            const J = new JokerTrump();
+            const J0 = new JokerTrump(0);
             const C1 = new Trump(TrumpSuitType.Crabs, 1);
             const H1 = new Trump(TrumpSuitType.Hearts, 1);
 
-            const cards: Card[] = [C3,D5,J,C1,H1];
+            const cards: Card[] = [C3,D5,J0,C1,H1];
             cards.sort(comparator.compare);
-            
-            assert.equal(cards, [C3,D5,C1,H1,J]);
+
+            assert.equal(cards, [C3,D5,C1,H1,J0]);
         });
     });
 });

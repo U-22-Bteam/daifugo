@@ -21,9 +21,9 @@ describe('カード', () => {
             const card: Card = new Trump(TrumpSuitType.Hearts, 7);
             assert.equal(card.getCode(), 'H7');
         });
-        it('ジョーカー (J)', () => {
-            const card: Card = new JokerTrump();
-            assert.equal(card.getCode(), 'J');
+        it('ジョーカー (J0)', () => {
+            const card: Card = new JokerTrump(0);
+            assert.equal(card.getCode(), 'J0');
         });
     });
 
@@ -66,9 +66,9 @@ describe('カード', () => {
             assert.equal(trump.suit, TrumpSuitType.Hearts);
             assert.equal(trump.rank, 11);
         });
-        it('J -> ジョーカー', () => {
-            let joker = CardHelper.createByCode('J') as JokerTrump;
-            assert.equal(joker.getCode(), 'J');
+        it('J1 -> ジョーカー(1)', () => {
+            let joker = CardHelper.createByCode('J1') as JokerTrump;
+            assert.equal(joker.getCode(), 'J1');
         });
     });
 });

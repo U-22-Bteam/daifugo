@@ -58,8 +58,15 @@ export class Trump extends Card {
  *   今回は、ジョーカーを特殊化
  */
 export class JokerTrump extends Card {
+    readonly id: number;
+    
+    constructor(id: number) {
+        super();
+        this.id = id;
+    }
+
     public getCode(): string {
-        return 'J';
+        return 'J' + this.id;
     }
 }
 
@@ -108,14 +115,14 @@ export class CardHelper {
 
         // ジョーカー
         if (code == 'J') {
-            return new JokerTrump();
+            return new JokerTrump(0);
         }
 
-        // TODO: Joker以外は、2文字未満の時にエラー
+        // 2文字未満の際はエラー
         if (code.length < 2) {
             throw new TypeError('不正なコード: 無効なコードです');
         }
-
+        
         // スートと階級を分解
         let headerCode = code.charAt(0);
         let suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
