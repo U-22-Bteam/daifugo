@@ -116,15 +116,15 @@ export class CardHelper {
             throw new TypeError('不正なコード: 無効なコードです');
         }
 
-        // 頭と数字を分解
-        let headerCode: string = code.substring(0, 1);
-        let rank: number = parseInt(code.substring(1), 10);
-
-        let suitType = CodeSuitConverter.headerCodeToSuitType(headerCode);
-        if (suitType === undefined) {
+        // スートと階級を分解
+        let headerCode = code.charAt(0);
+        let suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
+        if (suit === undefined) {
             throw new TypeError('不正なコード: トランプのヘッダーコードが無効です');
         }
-        return new Trump(suitType, rank);
+        let rankCode = code.substring(1)
+        let rank: number = parseInt(rankCode, 10);
+        return new Trump(suit, rank);
     }
 
     public static toCode(card: Card): string {
