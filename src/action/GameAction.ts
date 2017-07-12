@@ -3,7 +3,7 @@
 import { Action } from './Action';
 
 /**
- * ゲームアクションの元となるクラス。
+ * ゲームアクションの元となるクラス (暫定)
  */
 export abstract class GameAction extends Action {
     constructor(code: string) {
@@ -12,7 +12,7 @@ export abstract class GameAction extends Action {
 }
 
 /**
- * カードに関するアクション
+ * カードに関するアクション (暫定)
  */
 export abstract class CardAction extends GameAction {
     constructor(code: string) {

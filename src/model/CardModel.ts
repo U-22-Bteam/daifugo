@@ -77,7 +77,7 @@ export class CodeSuitConverter {
     /**
      * カードのヘッダーコードからトランプの種別に変換する
      * @param code カードのヘッダーコード
-     * @return トランプの種別。存在しない種別が指定された場合、Invalidを返す。
+     * @return トランプの種別。存在しない種別が指定された場合、undefinedを返す。
      */
     public static headerCodeToSuitType(headerCode: string): TrumpSuitType|undefined {
         switch (headerCode) {
