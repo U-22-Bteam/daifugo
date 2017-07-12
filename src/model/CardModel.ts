@@ -113,7 +113,7 @@ export class CardHelper {
 
         // TODO: Joker以外は、2文字未満の時にエラー
         if (code.length < 2) {
-            throw new TypeError('不正なコードが指定されました');
+            throw new TypeError('不正なコード: 無効なコードです');
         }
 
         // 頭と数字を分解
@@ -122,7 +122,7 @@ export class CardHelper {
 
         let suitType = CodeSuitConverter.headerCodeToSuitType(headerCode);
         if (suitType === undefined) {
-            throw new TypeError('不正なコードが指定されました');
+            throw new TypeError('不正なコード: トランプのヘッダーコードが無効です');
         }
         return new Trump(suitType, rank);
     }
