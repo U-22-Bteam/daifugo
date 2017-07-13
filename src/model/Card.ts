@@ -47,8 +47,8 @@ export class Trump extends Card {
     }
 
     public getCode(): string {
-        let headerCode = CodeSuitConverter.suitTypeToHeaderCode(this.suit);
-        let rankCode = this.rank.toString();
+        const headerCode = CodeSuitConverter.suitTypeToHeaderCode(this.suit);
+        const rankCode = this.rank.toString();
         return headerCode + rankCode;
     }
 }
@@ -117,10 +117,10 @@ export class CardHelper {
         }
 
         // ヘッダーコードと数値コードを分離
-        let headerCode = code.charAt(0);
-        let numberCode = code.substring(1)
+        const headerCode = code.charAt(0);
+        const numberCode = code.substring(1)
 
-        let number = parseInt(numberCode, 10);
+        const number = parseInt(numberCode, 10);
         if (isNaN(number)) {
             throw new TypeError('不正なコード: 数値コードが数値に変換できません');
         }
@@ -130,7 +130,7 @@ export class CardHelper {
             return new JokerTrump(number);
         }
 
-        let suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
+        const suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
         if (suit === undefined) {
             throw new TypeError('不正なコード: トランプのヘッダーコードが無効です');
         }

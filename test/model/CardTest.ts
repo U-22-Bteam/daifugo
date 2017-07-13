@@ -57,17 +57,17 @@ describe('カード', () => {
 
     context('ヘルパー', () => {
         it('S3 -> スペードの3', () => {
-            let trump = CardHelper.createByCode('S3') as Trump;
+            const trump = CardHelper.createByCode('S3') as Trump;
             assert.equal(trump.suit, TrumpSuitType.Spades);
             assert.equal(trump.rank, 3);
         });
         it('H11 -> ハートの11', () => {
-            let trump = CardHelper.createByCode('H11') as Trump;
+            const trump = CardHelper.createByCode('H11') as Trump;
             assert.equal(trump.suit, TrumpSuitType.Hearts);
             assert.equal(trump.rank, 11);
         });
         it('J1 -> ジョーカー(1)', () => {
-            let joker = CardHelper.createByCode('J1') as JokerTrump;
+            const joker = CardHelper.createByCode('J1') as JokerTrump;
             assert.equal(joker.getCode(), 'J1');
         });
     });
