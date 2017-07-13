@@ -33,13 +33,20 @@ export class ActionStore {
     }
 
     /**
+     * 存在するアクションコードか確認する
+     */
+    contains(code: string): boolean {
+        return code in this.actions;
+    }
+    
+    /**
      * アクションを取得する
      * @param code アクションコード
      */
     getAction(code: string): Action {
         // アクションコードが存在しない
-        if (code in this.actions === false) {
             throw new TypeError('登録されていないアクションコードが指定されました');
+        if (!this.contains(code)) {
         }
         return this.actions[code];
     }
