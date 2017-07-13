@@ -1,7 +1,7 @@
 'use strict';
 
 import * as assert from 'power-assert';
-import { Card, Trump, JokerTrump, TrumpSuitType, CodeSuitConverter, CardHelper } from '../../src/model/CardModel';
+import { Card, Trump, JokerTrump, TrumpSuitType, CodeSuitConverter, CardHelper } from '../../src/model/Card';
 
 describe('カード', () => {
     context('オブジェクトコード', () => {
