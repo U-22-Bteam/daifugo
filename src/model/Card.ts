@@ -111,28 +111,30 @@ export class CodeSuitConverter {
  */
 export class CardHelper {
     public static createByCode(code: string): Card {
-        // ジョーカー
-        if (code == 'J') {
-            return new JokerTrump(0);
-        }
-
         // 2文字未満の際はエラー
         if (code.length < 2) {
             throw new TypeError('不正なコード: 無効なコードです');
         }
-        
-        // スートと階級を分解
+
+        // ヘッダーコードと数値コードを分離
         let headerCode = code.charAt(0);
+        let numberCode = code.substring(1)
+
+        let number = parseInt(numberCode, 10);
+        if (isNaN(number)) {
+            throw new TypeError('不正なコード: 数値コードが数値に変換できません');
+        }
+
+        // ジョーカー
+        if (headerCode == 'J') {
+            return new JokerTrump(number);
+        }
+
         let suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
         if (suit === undefined) {
             throw new TypeError('不正なコード: トランプのヘッダーコードが無効です');
         }
-        let rankCode = code.substring(1)
-        let rank = parseInt(rankCode, 10);
-        if (isNaN(rank)) {
-            throw new TypeError('不正なコード: トランプの階級が数値に変換できません');
-        }
-        return new Trump(suit, rank);
+        return new Trump(suit, number);
     }
 
     public static toCode(card: Card): string {
