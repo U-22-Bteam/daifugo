@@ -111,9 +111,6 @@ export class CodeSuitConverter {
  */
 export class CardHelper {
     public static createByCode(code: string): Card {
-        // TODO: 念のため、空白削除と大文字化
-        code = code.trim().toUpperCase();
-
         // ジョーカー
         if (code == 'J') {
             return new JokerTrump(0);
