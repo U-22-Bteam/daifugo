@@ -72,6 +72,7 @@ export class JokerTrump extends Card {
 
 /**
  * カードの識別コードとトランプの種別を相互変換するクラス
+ *   HACK: メソッドに改善の余地あり。
  */
 export class CodeSuitConverter {
     /**
