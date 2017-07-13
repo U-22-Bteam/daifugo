@@ -45,8 +45,8 @@ export class ActionStore {
      */
     getAction(code: string): Action {
         // アクションコードが存在しない
-            throw new TypeError('登録されていないアクションコードが指定されました');
         if (!this.contains(code)) {
+            throw new TypeError(`登録されていないアクションコードが指定されました: code=${ code }`);
         }
         return this.actions[code];
     }
