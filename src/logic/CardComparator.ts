@@ -1,7 +1,7 @@
 'use strict';
 
-import { IComparator } from '../common/Common';
-import { Card } from '../model/Card';
+import { IComparator } from 'common/Common';
+import { Card } from 'model/Card';
 
 /**
  * カード比較器のベース

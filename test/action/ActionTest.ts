@@ -1,7 +1,7 @@
 'use strict';
 
 import * as assert from 'power-assert';
-import { Action, ActionStore } from '../../src/action/Action';
+import { Action, ActionStore } from 'action/Action';
 
 describe('アクション', () => {
     const TestActionCode = 'test.action';
