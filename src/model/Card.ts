@@ -47,8 +47,8 @@ export class Trump extends Card {
     }
 
     public getCode(): string {
-        let headerCode = CodeSuitConverter.suitTypeToHeaderCode(this.suit);
-        let rankCode = this.rank.toString();
+        const headerCode = CodeSuitConverter.suitTypeToHeaderCode(this.suit);
+        const rankCode = this.rank.toString();
         return headerCode + rankCode;
     }
 }
@@ -72,6 +72,7 @@ export class JokerTrump extends Card {
 
 /**
  * カードの識別コードとトランプの種別を相互変換するクラス
+ *   HACK: メソッドに改善の余地あり。
  */
 export class CodeSuitConverter {
     /**
@@ -110,31 +111,30 @@ export class CodeSuitConverter {
  */
 export class CardHelper {
     public static createByCode(code: string): Card {
-        // TODO: 念のため、空白削除と大文字化
-        code = code.trim().toUpperCase();
-
-        // ジョーカー
-        if (code == 'J') {
-            return new JokerTrump(0);
-        }
-
         // 2文字未満の際はエラー
         if (code.length < 2) {
             throw new TypeError('不正なコード: 無効なコードです');
         }
-        
-        // スートと階級を分解
-        let headerCode = code.charAt(0);
-        let suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
+
+        // ヘッダーコードと数値コードを分離
+        const headerCode = code.charAt(0);
+        const numberCode = code.substring(1)
+
+        const number = parseInt(numberCode, 10);
+        if (isNaN(number)) {
+            throw new TypeError('不正なコード: 数値コードが数値に変換できません');
+        }
+
+        // ジョーカー
+        if (headerCode == 'J') {
+            return new JokerTrump(number);
+        }
+
+        const suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
         if (suit === undefined) {
             throw new TypeError('不正なコード: トランプのヘッダーコードが無効です');
         }
-        let rankCode = code.substring(1)
-        let rank = parseInt(rankCode, 10);
-        if (isNaN(rank)) {
-            throw new TypeError('不正なコード: トランプの階級が数値に変換できません');
-        }
-        return new Trump(suit, rank);
+        return new Trump(suit, number);
     }
 
     public static toCode(card: Card): string {
