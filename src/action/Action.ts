@@ -1,4 +1,3 @@
-
 /**
  * アクションの元となるクラス。
  *   サーバー⇔クライアント間ではアクションコードを通じてやり取りを行う。
@@ -28,14 +27,14 @@ export class ActionStore {
      * アクションを登録する
      * @param action 登録するアクション
      */
-    register(action: Action): void {
+    public register(action: Action): void {
         this.actions[action.code] = action;
     }
 
     /**
      * 存在するアクションコードか確認する
      */
-    contains(code: string): boolean {
+    public contains(code: string): boolean {
         return code in this.actions;
     }
     
@@ -43,7 +42,7 @@ export class ActionStore {
      * アクションを取得する
      * @param code アクションコード
      */
-    getAction(code: string): Action {
+    public getAction(code: string): Action {
         // アクションコードが存在しない
         if (!this.contains(code)) {
             throw new TypeError(`登録されていないアクションコード(${code})が指定されました`);
