@@ -1,5 +1,3 @@
-'use strict';
-
 import * as assert from 'power-assert';
 import { Card, Trump, JokerTrump, TrumpSuitType, CodeSuitConverter, CardHelper } from 'model/Card';
 

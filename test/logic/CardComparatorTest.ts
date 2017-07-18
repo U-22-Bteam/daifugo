@@ -1,5 +1,3 @@
-'use strict';
-
 import * as assert from 'power-assert';
 import { CardPowerComparator } from 'logic/CardComparator';
 import { Card, Trump, JokerTrump, TrumpSuitType } from 'model/Card';

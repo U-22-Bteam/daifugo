@@ -1,5 +1,3 @@
-'use strict';
-
 import { IComparator } from 'common/Common';
 import { Card } from 'model/Card';
 
