@@ -40,7 +40,7 @@ export class CardPowerComparator extends CardComparator {
         var str:string;
         var strength:number;
         str = code.substr(1);
-        strength = str - 0;
+        strength = parseInt(str, 10);
 
         if (strength == 2 || strength == 1){
             strength = strength + 13;
