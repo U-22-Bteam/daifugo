@@ -10,9 +10,9 @@ import { Player } from './Player';
  */
 export class Dealer {
     private rules: RuleSet;
+    private players: Player[];
 
     readonly cards: Card[];
-    readonly players: Player[];
 
     constructor(rules: RuleSet, players: Player[]) {
         this.rules = rules;
