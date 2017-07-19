@@ -12,8 +12,19 @@ export class Player {
         this.user = user;
     }
 
-    drawCards(...cards: Card[]) {
-        this.cards.push(...cards)
+    /**
+     * カードを引くメソッド
+     */ 
+    public draw(card: Card): void {
+        this.cards.push(card);
+    }
+
+    /**
+     * カードを捨てるメソッド
+     */
+    public discard(card: Card): void {
+        const index = this.cards.indexOf(card);
+        this.cards.splice(index, 1);
     }
 }
 
