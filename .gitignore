@@ -1,5 +1,6 @@
 node_modules/
-out/
+build/
 **/.vs
 **/.vscode
 package-lock.json
+.idea/

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * カードのインターフェース
  */
@@ -113,7 +111,7 @@ export class CardHelper {
     public static createByCode(code: string): Card {
         // 2文字未満の際はエラー
         if (code.length < 2) {
-            throw new TypeError('不正なコード: 無効なコードです');
+            throw new TypeError(`不正なコード(${code}): 無効なコードです`);
         }
 
         // ヘッダーコードと数値コードを分離
@@ -122,7 +120,7 @@ export class CardHelper {
 
         const number = parseInt(numberCode, 10);
         if (isNaN(number)) {
-            throw new TypeError('不正なコード: 数値コードが数値に変換できません');
+            throw new TypeError(`不正なコード(${code}): 数値コードが数値に変換できません`);
         }
 
         // ジョーカー
@@ -132,7 +130,7 @@ export class CardHelper {
 
         const suit = CodeSuitConverter.headerCodeToSuitType(headerCode);
         if (suit === undefined) {
-            throw new TypeError('不正なコード: トランプのヘッダーコードが無効です');
+            throw new TypeError(`不正なコード(${code}): トランプのヘッダーコードが無効です`);
         }
         return new Trump(suit, number);
     }
