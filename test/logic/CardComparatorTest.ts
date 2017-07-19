@@ -1,8 +1,6 @@
-'use strict';
-
 import * as assert from 'power-assert';
-import { CardPowerComparator } from '../../src/logic/CardComparator';
-import { Card, Trump, JokerTrump, TrumpSuitType } from '../../src/model/Card';
+import { CardPowerComparator } from 'logic/CardComparator';
+import { Card, Trump, JokerTrump, TrumpSuitType } from 'model/Card';
 
 describe('カード比較器', () => {
     const comparator = new CardPowerComparator();
