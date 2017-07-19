@@ -7,9 +7,9 @@ canvas.width = container.clientWidth;
 canvas.height = container.clientHeight;
 
 var image = new Image();
-image.src = '..\images\png\C01.png';
+image.src = '..\\images\\png\\C01.png';
 // canvas.addEventListener('load', function () {
 image.addEventListener('load', function () {
-    context.drawImage(image, 0, 0);
+    ctx.drawImage(image, 0, 0);
 }, false);
 // });
