@@ -24,11 +24,24 @@ export class Dealer {
      * カードを全プレイヤーに配る（メソッド名は適当）
      */
     public dealToAllPlayers(): void {
+        const playersCount = this.players.length;
+
+        let dealIndex = 0;
+        this.cards.forEach(card => {
+            dealIndex = dealIndex + 1 % playersCount;
+            this.players[dealIndex].draw(card);
+        });
     }
 
     /**
      * カードをシャッフルするメソッド
      */
     public shuffleCards() {
+        for (let fromIndex = 0, len = this.cards.length; fromIndex < len; fromIndex++) {
+            let toIndex = Math.floor(Math.random() * len);
+            let temp = this.cards[fromIndex];
+            this.cards[fromIndex] = this.cards[toIndex];
+            this.cards[toIndex] = temp;
+        }
     }
 }
