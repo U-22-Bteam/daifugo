@@ -32,15 +32,18 @@ export class CardPowerComparator extends CardComparator {
     * カードコードの数字部分を直接比較できるように直す
     */
     CardCodeToCardStrength(code: string){
+
+        if (code.charAt(0) === 'J'){
+            return 15;
+        }
+
         var str:string;
         var strength:number;
         str = code.substr(1);
-        if (code.charAt(0) === 'J'){
-            strength = 15;
-        }else if (str == 2 || str == 1){
-            strength = str + 13;
-        }else{
-            strength = str - 0;
+        strength = str - 0;
+
+        if (strength == 2 || strength == 1){
+            strength = strength + 13;
         }
         return strength;
     }
