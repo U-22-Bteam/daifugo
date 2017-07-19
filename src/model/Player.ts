@@ -1,5 +1,6 @@
 import { Card } from './Card';
 import { User, ConnectionUser } from './User';
+import { EventCode } from 'event/EventCode';
 
 /**
  * プレイヤーの基底クラス
@@ -12,8 +13,19 @@ export class Player {
         this.user = user;
     }
 
-    drawCards(...cards: Card[]) {
-        this.cards.push(...cards)
+    /**
+     * カードを引くメソッド
+     */ 
+    public draw(card: Card): void {
+        this.cards.push(card);
+    }
+
+    /**
+     * カードを捨てるメソッド
+     */
+    public discard(card: Card): void {
+        const index = this.cards.indexOf(card);
+        this.cards.splice(index, 1);
     }
 }
 
@@ -25,5 +37,15 @@ export class HumanPlayer extends Player {
 
     constructor(user: ConnectionUser) {
         super(user);
+    }
+
+    public draw(card: Card): void {
+        super.draw(card);
+        this.user.socket.emit(EventCode.UserCardDraw, card);
+    }
+
+    public discard(card: Card): void {
+        super.discard(card);
+        this.user.socket.emit(EventCode.UserCardDiscard, card);
     }
 }
