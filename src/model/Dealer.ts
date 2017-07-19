@@ -1,5 +1,5 @@
+import { RuleSet } from './RuleSet'
 import { Card } from './Card';
-import { CardDeck } from './CardDeck'
 import { Player } from './Player';
 
 /**
@@ -9,11 +9,14 @@ import { Player } from './Player';
  *   たぶんプレイヤーを知っている必要がある。
  */
 export class Dealer {
+    private rules: RuleSet;
+
     readonly cards: Card[];
     readonly players: Player[];
 
-    constructor(deck: CardDeck, players: Player[]) {
-        this.cards = Object.create(deck.cards);
+    constructor(rules: RuleSet, players: Player[]) {
+        this.rules = rules;
+        this.cards = Object.create(rules.deck.cards);
         this.players = players;
     }
 
