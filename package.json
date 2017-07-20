@@ -4,7 +4,6 @@
   "description": "U-22 daifugo project",
   "main": "main.js",
   "scripts": {
-    "start": "node build/server/main.js",
     "build": "tsc --project ./src",
     "test": "mocha --compilers ts:ts-node/register -r tsconfig-paths/register --colors test/**/*.ts"
   },
