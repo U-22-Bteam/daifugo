@@ -24,6 +24,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/U-22-Bteam/daifugo"
+    "url": "git+https://github.com/U-22-Bteam/daifugo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/U-22-Bteam/daifugo/issues"
+  },
+  "homepage": "https://github.com/U-22-Bteam/daifugo#readme",
+  "directories": {
+    "test": "test"
   }
 }
