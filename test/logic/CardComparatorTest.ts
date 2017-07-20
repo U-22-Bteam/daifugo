@@ -36,10 +36,14 @@ describe('カード比較器', () => {
             const C1 = new Trump(TrumpSuitType.Crabs, 1);
             const H1 = new Trump(TrumpSuitType.Hearts, 1);
 
-            const cards: Card[] = [C3,D5,J0,C1,H1];
-            cards.sort(comparator.compare);
-
-            assert.equal(cards, [C3,D5,C1,H1,J0]);
+            let cards: Card[] = [C3,D5,J0,C1,H1];
+            cards.sort((a,b) => comparator.compare(a,b));
+            
+            assert.equal(cards[0], J0);
+            assert.equal(cards[1], C1);
+            assert.equal(cards[2], H1);
+            assert.equal(cards[3], D5);
+            assert.equal(cards[4], C3);
         });
     });
 });
