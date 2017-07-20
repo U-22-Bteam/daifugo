@@ -12,6 +12,7 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
+    "moduleResolution": "classic",
     "baseUrl": "./"
   }
 }
