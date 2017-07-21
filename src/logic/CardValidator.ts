@@ -6,18 +6,21 @@ import { CardHand } from 'model/CardHand';
  * カードの組み合わせが現在の状況に適用できるか（正しい組み合わせか）を検証するクラス
  */
 export class CardValidator {
-    private rules: RuleSet;
-    private state: GameState;
+    private _state: GameState;      // ゲームの状態
+    private _message: string = '';  // 検証時に報告したいメッセージ
 
-    constructor(rules: RuleSet, state: GameState) {
-        this.rules = rules;
-        this.state = state;
+    constructor(state: GameState) {
+        this._state = state;
+    }
+
+    public get message(): string {
+        return this._message;
     }
 
     /**
      * 検証する
     */
-    public validate(hand: CardHand) {
-        
+    public validate(hand: CardHand): boolean {
+        return true;
     }
 }
