@@ -1,6 +1,6 @@
 import { Card } from './Card';
 import { User, ConnectionUser } from './User';
-import { EventCode } from 'event/EventCode';
+import { EventCode } from '../event/EventCode';
 
 /**
  * プレイヤーの基底クラス
