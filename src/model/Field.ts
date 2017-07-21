@@ -1,4 +1,6 @@
 import { CardHand } from './CardHand';
+import { MainServer } from 'server/MainServer';
+import { EventCode } from '../event/EventCode';
 
 /**
  * 場を構成するクラス
@@ -34,5 +36,27 @@ export class Field {
         
         const lastIndex = this._hands.length - 1;
         return this._hands[lastIndex];
+    }
+}
+
+/**
+ * サーバー・クライアント間でイベント処理を行うフィールド（場）
+ */
+export class ConnectionField extends Field {
+    private server: MainServer;
+
+    constructor(server: MainServer) {
+        super();
+        this.server = server;
+    }
+
+    public clear(): void {
+        super.clear();
+        this.server.io.emit(EventCode.FieldClear);
+    }
+
+    public put(hand: CardHand): void {
+        super.put(hand);
+        this.server.io.emit(EventCode.FieldPut, hand);
     }
 }
