@@ -43,22 +43,32 @@ export class Player {
 }
 
 /**
- * 人間が操作するプレイヤー
+ * サーバー・クライアント間でイベント処理を行うプレイヤー
  */
 export class ConnectionPlayer extends Player {
     readonly user: ConnectionUser;
 
     constructor(user: ConnectionUser) {
         super(user);
+
+        this.user.socket.on(EventCode.PlayerGetCards, () => {
+            let codes: string[] = [];
+            this.cards.forEach(c => codes.push(c.getCode()));
+            this.user.socket.emit(EventCode.PlayerGetCards, codes);
+        });
     }
 
     public draw(card: Card): void {
         super.draw(card);
-        this.user.socket.emit(EventCode.UserCardDraw, card);
+        this.user.socket.emit(EventCode.PlayerCardDraw, card.getCode());
     }
 
     public discard(card: Card): void {
         super.discard(card);
-        this.user.socket.emit(EventCode.UserCardDiscard, card);
+        this.user.socket.emit(EventCode.PlayerCardDiscard, card.getCode());
+    }
+
+    public error(message: string): void {
+        this.user.socket.emit(EventCode.PlayerError, message);
     }
 }
