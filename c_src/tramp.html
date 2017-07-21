@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>トランプ</title>
+    <link rel="stylesheet" type="text/css" href="user.css"
+          media="all" />
+</head>
+<body>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<script type="text/javascript">
+    (function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        var srcs = [
+            '../images/png/c01.png',
+            '../images/png/c02.png',
+            '../images/png/c03.png',
+            '../images/png/c04.png',
+            '../images/png/c05.png',
+            '../images/png/c06.png',
+            '../images/png/c07.png',
+            '../images/png/c08.png',
+            '../images/png/c09.png',
+            '../images/png/c10.png',
+            '../images/png/c11.png',
+            '../images/png/c12.png',
+            '../images/png/c13.png'
+
+        ];
+        var images = [];
+        for (var i in srcs) {
+            images[i] = new Image();
+            images[i].src = srcs[i];
+        }
+
+        var loadedCount = 1;
+        for (var i in images) {
+            images[i].addEventListener('load', function() {
+                if (loadedCount == images.length) {
+                    var x = 0;
+                    var y = 0;
+                    for (var j in images) {
+                        context.drawImage(images[j], x, y, 150, 100);
+                        x += 50;
+//                        y += 70;
+                    }
+                }
+                loadedCount++;
+            }, false);
+        }
+    })();
+</script>
+</body>
+</html>
