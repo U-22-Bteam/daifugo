@@ -9,39 +9,43 @@ import { Player } from './Player';
  *   たぶんプレイヤーを知っている必要がある。
  */
 export class Dealer {
-    private rules: RuleSet;
-    private players: Player[];
-
-    readonly cards: Card[];
+    private _rules: RuleSet;
+    private _players: Player[];
+    private _cards: Card[];
 
     constructor(rules: RuleSet, players: Player[]) {
-        this.rules = rules;
-        this.cards = Object.create(rules.deck.cards);
-        this.players = players;
+        this._rules = rules;
+        this._players = players;
+        this._cards = Object.create(rules.deck.cards);
+    }
+
+    public get cards(): Card[] {
+        return this._cards;
     }
 
     /**
      * カードを全プレイヤーに配る（メソッド名は適当）
      */
     public dealToAllPlayers(): void {
-        const playersCount = this.players.length;
+        const playersCount = this._players.length;
 
         let dealIndex = 0;
-        this.cards.forEach(card => {
-            dealIndex = dealIndex + 1 % playersCount;
-            this.players[dealIndex].draw(card);
+        this._cards.forEach(card => {
+            dealIndex = (dealIndex + 1) % playersCount;
+            this._players[dealIndex].draw(card);
         });
+        this._cards = [];
     }
 
     /**
      * カードをシャッフルするメソッド
      */
     public shuffleCards() {
-        for (let fromIndex = 0, len = this.cards.length; fromIndex < len; fromIndex++) {
+        for (let fromIndex = 0, len = this._cards.length; fromIndex < len; fromIndex++) {
             let toIndex = Math.floor(Math.random() * len);
-            let temp = this.cards[fromIndex];
-            this.cards[fromIndex] = this.cards[toIndex];
-            this.cards[toIndex] = temp;
+            let temp = this._cards[fromIndex];
+            this._cards[fromIndex] = this._cards[toIndex];
+            this._cards[toIndex] = temp;
         }
     }
 }

@@ -9,7 +9,7 @@ export class User {
 }
 
 export class ConnectionUser extends User {
-    readonly socket: SocketIO.Socket;
+    public socket: SocketIO.Socket;
 
     constructor(username: string, socket: SocketIO.Socket) {
         super(username);

@@ -15,6 +15,12 @@ describe('ディーラー', () => {
     const rules = RuleSet.createDefault();
     const dealer = new Dealer(rules, players);
 
+    context('配る', () => {
+        it('とりあえず通るか', () => {
+            dealer.dealToAllPlayers();
+        });
+    });
+
     context('シャッフル', () => {
         it('枚数は同じ', () => {
             dealer.shuffleCards();

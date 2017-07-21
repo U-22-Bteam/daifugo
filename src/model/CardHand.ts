@@ -1,4 +1,4 @@
-import { Card } from './Card';
+import { Card, CardHelper } from './Card';
 
 /**
  * カードの組み合わせを表すクラス (手)
@@ -9,5 +9,15 @@ export class CardHand {
 
     constructor(cards: Card[]) {
         this.cards = cards;
+    }
+
+    public static fromCodes(codes: string[]): CardHand {
+        let cards: Card[] = [];
+        codes.forEach(c => cards.push(CardHelper.createByCode(c)));
+        return new CardHand(cards);
+    }
+
+    public toString(): string {
+        return this.cards.toString();
     }
 }

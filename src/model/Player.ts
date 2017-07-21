@@ -27,25 +27,48 @@ export class Player {
         const index = this.cards.indexOf(card);
         this.cards.splice(index, 1);
     }
+
+    /**
+     * コードからカードを捨てるメソッド
+     */
+    public discardByCode(code: string): void {
+        const filteredCards = this.cards.filter(c => c.getCode() == code);
+        if (filteredCards.length == 0) {
+            throw new TypeError('存在しないコード');
+        }
+        
+        const card = filteredCards[0];
+        this.discard(card);
+    }
 }
 
 /**
- * 人間が操作するプレイヤー
+ * サーバー・クライアント間でイベント処理を行うプレイヤー
  */
-export class HumanPlayer extends Player {
+export class ConnectionPlayer extends Player {
     readonly user: ConnectionUser;
 
     constructor(user: ConnectionUser) {
         super(user);
+
+        this.user.socket.on(EventCode.PlayerGetCards, () => {
+            let codes: string[] = [];
+            this.cards.forEach(c => codes.push(c.getCode()));
+            this.user.socket.emit(EventCode.PlayerGetCards, codes);
+        });
     }
 
     public draw(card: Card): void {
         super.draw(card);
-        this.user.socket.emit(EventCode.UserCardDraw, card);
+        this.user.socket.emit(EventCode.PlayerCardDraw, card.getCode());
     }
 
     public discard(card: Card): void {
         super.discard(card);
-        this.user.socket.emit(EventCode.UserCardDiscard, card);
+        this.user.socket.emit(EventCode.PlayerCardDiscard, card.getCode());
+    }
+
+    public error(message: string): void {
+        this.user.socket.emit(EventCode.PlayerError, message);
     }
 }
