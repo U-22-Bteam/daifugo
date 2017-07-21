@@ -13,6 +13,10 @@ export interface ICard {
  */
 export abstract class Card implements ICard {
     public abstract getCode(): string;
+
+    public toString(): string {
+        return this.getCode();
+    }
 }
 
 /**
@@ -133,9 +137,5 @@ export class CardHelper {
             throw new TypeError(`不正なコード(${code}): トランプのヘッダーコードが無効です`);
         }
         return new Trump(suit, number);
-    }
-
-    public static toCode(card: Card): string {
-        return card.getCode();
     }
 }
