@@ -3,19 +3,21 @@
 <head>
     <meta charset="utf-8">
     <title>トランプ</title>
-    <link rel="stylesheet" type="text/css" href="user.css"
+    <link rel="stylesheet" type="text/css"
           media="all" />
+    <style>
+        body{background-color:green;}
+    </style>
 </head>
 <body>
 
-<canvas id="canvas" width="600" height="400"></canvas>
+<canvas id="canvas" width="1200" height="570"></canvas>
 
 <script type="text/javascript">
     (function() {
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
-
-        var srcs = [
+        var imagepath = [
             '../images/png/c01.png',
             '../images/png/c02.png',
             '../images/png/c03.png',
@@ -28,28 +30,62 @@
             '../images/png/c10.png',
             '../images/png/c11.png',
             '../images/png/c12.png',
-            '../images/png/c13.png'
-
+            '../images/png/c13.png',
+            '../images/png/d01.png',
+            '../images/png/d02.png',
+            '../images/png/d03.png',
+            '../images/png/d04.png',
+            '../images/png/d05.png',
+            '../images/png/d06.png',
+            '../images/png/d07.png',
+            '../images/png/d08.png',
+            '../images/png/d09.png',
+            '../images/png/d10.png',
+            '../images/png/d11.png',
+            '../images/png/d12.png',
+            '../images/png/d13.png',
+            '../images/png/h01.png',
+            '../images/png/h02.png',
+            '../images/png/h03.png',
+            '../images/png/h04.png',
+            '../images/png/h05.png',
+            '../images/png/h06.png',
+            '../images/png/h07.png',
+            '../images/png/h08.png',
+            '../images/png/h09.png',
+            '../images/png/h10.png',
+            '../images/png/h11.png',
+            '../images/png/h12.png',
+            '../images/png/h13.png',
+            '../images/png/s01.png',
+            '../images/png/s02.png',
+            '../images/png/s03.png',
+            '../images/png/s04.png',
+            '../images/png/s05.png',
+            '../images/png/s06.png',
+            '../images/png/s07.png',
+            '../images/png/s08.png',
+            '../images/png/s09.png',
+            '../images/png/s10.png',
+            '../images/png/s11.png',
+            '../images/png/s12.png',
+            '../images/png/s13.png'
         ];
-        var images = [];
-        for (var i in srcs) {
-            images[i] = new Image();
-            images[i].src = srcs[i];
+
+        var images=new Array();
+
+        for (var b =0;b<imagepath.length;b++) {
+            images[b] = new Image();
+            images[b].src = imagepath[b];
         }
 
-        var loadedCount = 1;
-        for (var i in images) {
-            images[i].addEventListener('load', function() {
-                if (loadedCount == images.length) {
-                    var x = 0;
-                    var y = 0;
-                    for (var j in images) {
-                        context.drawImage(images[j], x, y, 150, 100);
-                        x += 50;
-//                        y += 70;
-                    }
-                }
-                loadedCount++;
+
+        var x = 50;
+        var y = 50;
+        for (var a=0;a<images.length;a++) {
+            images[a].addEventListener('load', function() {
+                context.drawImage(images[a], x, y);
+                x += 80;
             }, false);
         }
     })();
