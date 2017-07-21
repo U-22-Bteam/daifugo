@@ -8,7 +8,7 @@ describe('フィールド', () => {
         it('何もない状態で流す', () => {
             const field = new Field();
             field.clear();
-            assert.equal(field.getHands().length, 0);
+            assert.equal(field.hands.length, 0);
         });
         it('2セット置いて流す', () => {
             const field = new Field();
@@ -16,7 +16,7 @@ describe('フィールド', () => {
             field.put(new CardHand([new JokerTrump(3)]));
             field.put(new CardHand([new JokerTrump(4), new JokerTrump(5)]));
             field.clear();
-            assert.equal(field.getHands().length, 0);
+            assert.equal(field.hands.length, 0);
         })
     });
 
@@ -25,7 +25,7 @@ describe('フィールド', () => {
             const field = new Field();
             field.put(new CardHand([new JokerTrump(1), new JokerTrump(2)]));
             field.put(new CardHand([new JokerTrump(3)]));
-            assert.equal(field.getHands().length, 2);
+            assert.equal(field.hands.length, 2);
         });
     });
 
@@ -53,7 +53,7 @@ describe('フィールド', () => {
     context('全セットを取得', () => {
         it('何もない状態で取得 => lengthが0', () => {
             const field = new Field();
-            assert.equal(field.getHands().length, 0);
+            assert.equal(field.hands.length, 0);
         });
     });
 });

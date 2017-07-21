@@ -11,8 +11,13 @@ export class EventCode {
 
     public static GameReady = 'game.ready';
 
-    public static UserCardDraw = 'user.card.draw';
-    public static UserCardDiscard = 'user.card.discard';
+    public static PlayerError = 'player.error';
+    public static PlayerCardDraw = 'player.card.draw';
+    public static PlayerCardDiscard = 'player.card.discard';
+    public static PlayerGetCards = 'player.get.cards';
 
     public static GameFinish = "game.finish";
+
+    public static FieldClear = "field.clear";
+    public static FieldPut = "field.put";
 }

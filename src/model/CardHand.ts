@@ -10,4 +10,8 @@ export class CardHand {
     constructor(cards: Card[]) {
         this.cards = cards;
     }
+
+    public toString(): string {
+        return this.cards.toString();
+    }
 }
