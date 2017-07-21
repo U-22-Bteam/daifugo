@@ -3,7 +3,6 @@
     "target": "es5",
     "module": "commonjs",
     "allowJs": true,
-    "checkJs": true,
     "sourceMap": true,
     "outDir": "./build/",
     "removeComments": true,
