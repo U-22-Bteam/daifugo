@@ -32,7 +32,7 @@ export class Player {
 /**
  * 人間が操作するプレイヤー
  */
-export class HumanPlayer extends Player {
+export class ConnectionPlayer extends Player {
     readonly user: ConnectionUser;
 
     constructor(user: ConnectionUser) {
