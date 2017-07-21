@@ -9,14 +9,18 @@
 <body>
 <div id="form">
     <p class="form-title">名前を入力してください</p>
-    <form action="post">
+    <form action="stand.html">
         <p>名前</p>
-        <p class="name"><input type="name" name="name" /></p>
+        <p class="name"><input id="name" type="name" name="name" /></p>
 <!--戻る-->
         <a href="top.html" class="submit">戻る</a>
 <!--次へ-->
-        <a href="stand.html" class="button">登録</a>
+        <a href="stand.html" id="join" class="button">登録</a>
     </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
+<script src="script/user.js"></script>
 </body>
 </html>
