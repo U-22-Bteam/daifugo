@@ -11,6 +11,7 @@ export class Field {
      */
     public clear(): void {
         this.hands = [];
+        console.log('場が流れました');
     }
 
     /**
@@ -18,6 +19,7 @@ export class Field {
      */
     public put(hand: CardHand): void {
         this.hands.push(hand);
+        console.log(`場にカード置かれました: ${hand.cards}`);
     }
 
     /**
