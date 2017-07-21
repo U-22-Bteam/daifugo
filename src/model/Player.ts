@@ -27,6 +27,19 @@ export class Player {
         const index = this.cards.indexOf(card);
         this.cards.splice(index, 1);
     }
+
+    /**
+     * コードからカードを捨てるメソッド
+     */
+    public discardByCode(code: string): void {
+        const filteredCards = this.cards.filter(c => c.getCode() == code);
+        if (filteredCards.length == 0) {
+            throw new TypeError('存在しないコード');
+        }
+        
+        const card = filteredCards[0];
+        this.discard(card);
+    }
 }
 
 /**
