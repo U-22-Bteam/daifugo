@@ -1,16 +1,24 @@
 body{
-    margin:0;
-    background-image:url(../images/back.jpg);
-    background-position:center;
-    background-size:cover;
+    background: url(../images/back.jpg)
+    center center / cover no-repeat fixed;
 }
 
 body,p,form,input{margin: 0}
 #form{
-    width: 400px;
-    margin: 200px auto;
-    padding: 20px;
-    border: 1px solid #555;
+    background: rgb(184, 184, 184);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 1;
+    border : solid 20px #39271c
 }
 
 form p{
